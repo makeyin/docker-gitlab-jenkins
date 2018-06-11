@@ -1,0 +1,1 @@
+FROM daocloud.io/library/jenkins:2.60.3-alpine
