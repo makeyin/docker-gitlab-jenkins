@@ -1,12 +1,12 @@
 version: '2'
 services:
-    docker_registry:
-        container_name: docker_registry
-        image: daocloud.io/library/registry:latest
-        volumes:
-            - ../data/registry:/tmp/registry
-        ports:
-           - 5000:5000
+    # docker_registry:
+    #     container_name: docker_registry
+    #     image: daocloud.io/library/registry:latest
+    #     volumes:
+    #         - ../data/registry:/tmp/registry
+    #     ports:
+    #         - 5000:5000
     docker_gitlab:
         container_name: docker_gitlab
         build: 
@@ -17,9 +17,11 @@ services:
             - ../data/gitlab/logs:/var/log/gitlab
             - ../data/gitlab/data:/var/opt/gitlab
         hostname: docker.gitlab.com
+        links:
+            -  docker_jekins
         ports:
             - 443:443
-            - 81:80
+            - 80:80
             - 22:22
     docker_jekins:
         container_name: docker_jekins
